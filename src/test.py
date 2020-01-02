@@ -61,4 +61,8 @@ def test(filesName):
         effectiveness += curEffectiveness
         print(s)
     print()
-    print("Réussi : {}/{} \tScore : {}%".format(success, len(filesName), round(100*effectiveness/effectivenessN), 2))
+    if effectivenessN > 0:
+        score = round(100*effectiveness/effectivenessN, 2)
+        print("Réussi : {}/{} \tScore : {}%".format(success, len(filesName), score))
+    else:
+        print("Réussi : {}/{}".format(success, len(filesName)))
