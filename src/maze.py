@@ -64,12 +64,7 @@ class Maze:
         return self._player
 
     def getWidth(self):
-        maxWidth = 0
-        for y in range(len(self._maze)):
-            width = len(self._maze[y])
-            if width > maxWidth:
-                maxWidth = width
-        return maxWidth
+        return len(self._maze[0])
 
     def getHeight(self):
         return len(self._maze)
