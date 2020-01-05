@@ -1,0 +1,41 @@
+#!/bin/bash
+#Get code input and performs dos2unix
+getinput code | tr -d '\r' > code
+
+cd src
+parsetemplate --output code.py userCode.py
+
+#cat code.py | rst-code | feedback-msg -a
+
+#Execute the code
+OUTPUT=$(python3 run.py)
+
+if [ $? -ne 0 ]; then
+    feedback-result failed
+	feedback-msg -aem "Your code did not run correctly. Here is the output :\n\n"
+else
+	# Parse interesting datas based on last python print()
+	IS_SUCCESS=$(echo "$OUTPUT" | tail -n1 | head -n1)
+	FLAG_SUCCESS="FLAG SUCCESS"  # Flag at the end to declare that it did succeed (it is printed at the end if it succeds)
+
+	if [[ $IS_SUCCESS = "FLAG SUCCESS" ]]; then
+		MAZE_SUCCESS=$(echo "$OUTPUT" | tail -n4 | head -n1)
+		MAZE_TOTAL=$(echo "$OUTPUT" | tail -n3 | head -n1)
+		SCORE=$(echo "$OUTPUT" | tail -n2 | head -n1)
+
+		OUTPUT=$(echo "$OUTPUT" | head -n -5)
+
+	    feedback-result success
+	    feedback-grade "$SCORE"
+	    feedback-custom score "$SCORE"  # Use as scoreboard score
+
+	    feedback-msg-tpl -a "feedback" success="$MAZE_SUCCESS" total="$MAZE_TOTAL" score="$SCORE"
+
+		feedback-msg -aem "\n\nVoici les résultats du test :\n\n"
+	else
+		feedback-result failed
+		feedback-msg -aem "Your code did not run correctly. Here is the output :\n\n"
+	fi
+fi
+
+echo "$OUTPUT" | rst-code -e | feedback-msg -a

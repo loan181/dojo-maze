@@ -1,0 +1,55 @@
+accessible: true
+author: Loan
+categories: []
+context: Aide le joueur à trouver la sortie !
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: Concours Labyrinthe IA
+network_grading: false
+problems:
+    code:
+        name: Code de l'IA
+        type: code
+        language: python
+        header: |4-
+
+            .. raw:: html
+
+                <div class="alert alert-secondary" role="alert">
+                    <h6>Ceci n'est pas un debugger, tester votre code localement avant de le soummettre</h6>
+                </div>
+
+
+            Primitives (sur Game) :
+             - ``moveForward()`` : Avance le joueur devant lui (si la case n’est pas occupée par un mur)
+             - ``turnLeft()`` / ``turnRight()`` : Effectue une rotation du joueur de 90° sur la gauche/droite
+             - ``isFreeForward()`` / ``isGoalForward()`` -> ``bool`` : Vérifie si la case devant le joueur est libre/l’objectif
+             - ``direction()`` -> ``str(right``/``up``/``left``/``down)`` : Donne la direction du joueur
+
+            N'oublie pas de définir la fonction ``step()`` qui contiendra les actions que doit effectuer le joueur à chaque étape!
+        default: |4
+
+            def stepExample(game):
+                if game.isFreeForward() or game.isGoalForward():
+                    game.moveForward()
+                else:
+                    if game.direction() == "up":
+                        game.turnRight()
+                    else:
+                        game.turnLeft()
+
+            def step(game):
+                stepExample(game)
+run_cmd: ''
+stored_submissions: 20
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
