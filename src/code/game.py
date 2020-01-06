@@ -1,9 +1,9 @@
-from main import step
-from maze import Maze
-from player import Player, DIRECTION
-from tile import TILE
+from ia import step
+from code.maze import Maze
+from code.player import Player, DIRECTION
+from code.tile import TILE
 try:
-    from view import View
+    from code.view import View
     HAVE_VIEW = True
 except ImportError:
     HAVE_VIEW = False

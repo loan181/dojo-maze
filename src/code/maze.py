@@ -1,5 +1,5 @@
-from player import Player
-from tile import TILE
+from code.player import Player
+from code.tile import TILE
 
 def parseMazeTextFile(fileName):
     mazeStr = []

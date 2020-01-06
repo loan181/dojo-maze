@@ -1,5 +1,5 @@
-from game import Game
-from maze import parseMazeTextFile
+from code.game import Game
+from code.maze import parseMazeTextFile
 
 # Number of actions that will cost each level
 effectiveAction = {

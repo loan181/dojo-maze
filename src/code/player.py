@@ -1,4 +1,4 @@
-from tile import TILE
+from code.tile import TILE
 
 
 class DIRECTION:

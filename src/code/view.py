@@ -1,12 +1,11 @@
-import sys
 import pygame
 import math
 import time
 import sys
 import os
 import re
-from tile import TILE
-from player import DIRECTION
+from code.tile import TILE
+from code.player import DIRECTION
 
 # Largeur de la fenêtre
 WIDTH = 800
@@ -21,7 +20,7 @@ PLAYER_COLOR = (255, 200, 0)
 # Temps d'attente entre deux images
 SLEEP_TIME = 0.3
 # Répertoire où enregistrer les images png
-SAVE_IMAGE_DIR = "output"
+SAVE_IMAGE_DIR = "./output"
 
 class View:
     def __init__(self, maze):
