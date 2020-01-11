@@ -38,7 +38,7 @@ class Game:
 
         while self._stepN < 1000:
 
-            if self.getNow() >= self._lastStepTime + SLEEP_TIME:
+            if self.getNow() >= self._lastStepTime + SLEEP_TIME or not self._debug:
                 step(self) # User defined
 
                 if self._debug:
