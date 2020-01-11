@@ -6,7 +6,8 @@ from code import test as test
 SLEEP_TIME = 0.3
 
 """
-Début du fsdfdsfs
+Début du code
+C'est ici que tu décidera quoi tester (un seul niveau ? tous ? étape par étape?) 
 """
 if __name__ == '__main__':
     # Fichiers sur lesquels on veut tester notre code d'IA
@@ -20,7 +21,6 @@ if __name__ == '__main__':
         "hard1",
         "hard2",
     )
-    # Tests pour regarder l'eeficacité de notre fsdfdsfs
 
     test.debug("example", False) # Permet de tester sur un seul fichier
     #test.test(filesName)        # Permet de tester plusieurs fichier (avec score d'efficacité)
