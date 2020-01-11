@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 from code.tile import TILE
 
 
@@ -47,7 +50,7 @@ class Player:
     def isPosition(self, x, y):
         return self._x == x and self._y == y
 
-    def isForwardTile(self, tile: TILE):
+    def isForwardTile(self, tile):
         forwardPos = self._direction.getForwardPosition(self._x, self._y)
         return self._maze.getTileAtPosition(forwardPos[0], forwardPos[1]) == tile
 

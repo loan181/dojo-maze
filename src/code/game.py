@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from ia import step
 from code.maze import Maze
 from code.player import Player, DIRECTION
@@ -15,7 +17,7 @@ class Game:
         self._stepN = 0
         self._action_point = 0
         self._maze = Maze(maze_str)
-        self._player: Player = self._maze.getPlayer()
+        self._player = self._maze.getPlayer()
         if self._debug and HAVE_VIEW:
             self._view = View(self._maze)
         else:

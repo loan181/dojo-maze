@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from code.game import Game
 from code.maze import parseMazeTextFile
 

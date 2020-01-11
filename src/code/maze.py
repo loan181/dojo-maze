@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from code.player import Player
 from code.tile import TILE
 
@@ -72,7 +74,7 @@ class Maze:
     def getTileAtPosition(self, x, y):
         return self._maze[y][x]
 
-    def isTileAtPosition(self, x: int, y: int, tile: str):
+    def isTileAtPosition(self, x, y, tile):
         return self.getTileAtPosition(x, y) == tile
 
     def isPlayerOnGoal(self):
