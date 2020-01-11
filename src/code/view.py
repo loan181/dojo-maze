@@ -19,8 +19,6 @@ BACKGROUND_COLOR = (208, 208, 208)
 TEXT_COLOR = (48, 48, 48)
 # Couleur du personnage du joueur
 PLAYER_COLOR = (255, 200, 0)
-# Temps d'attente entre deux images
-SLEEP_TIME = 0.3
 # Répertoire où enregistrer les images png
 SAVE_IMAGE_DIR = "./output"
 
@@ -142,11 +140,13 @@ class View:
 
     def escape_pressed(self):
         """Check if user pressed on escape"""
-        time.sleep(SLEEP_TIME)
         event = pygame.event.poll()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 sys.exit(1)
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
 
     def _cleanup_image_dir(self):
         if not os.path.exists(SAVE_IMAGE_DIR):

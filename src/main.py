@@ -2,6 +2,9 @@
 
 from code import test as test
 
+# Temps d'attente entre deux étapes
+SLEEP_TIME = 0.3
+
 """
 Début du fsdfdsfs
 """

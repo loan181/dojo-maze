@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import time
 from ia import step
+from main import SLEEP_TIME
 from code.maze import Maze
 from code.player import Player, DIRECTION
 from code.tile import TILE
@@ -18,10 +20,14 @@ class Game:
         self._action_point = 0
         self._maze = Maze(maze_str)
         self._player = self._maze.getPlayer()
+        self._lastStepTime = self.getNow()
         if self._debug and HAVE_VIEW:
             self._view = View(self._maze)
         else:
             self._view = None
+
+    def getNow(self):
+        return time.time()
 
     def startGame(self):
         self._stepN = 0
@@ -30,17 +36,24 @@ class Game:
         if self._view is not None:
             self._view.draw(self._stepN, self._action_point)
 
-        for self._stepN in range(1, 1000):
-            step(self) # User defined
+        while self._stepN < 1000:
 
-            if self._debug:
-                if self._view is not None:
-                    self._view.draw(self._stepN, self._action_point)
-                self.printMaze()
+            if self.getNow() >= self._lastStepTime + SLEEP_TIME:
+                step(self) # User defined
 
-            if self._maze.isPlayerOnGoal():
-                self._won = True
-                break
+                if self._debug:
+                    if self._view is not None:
+                        self._view.draw(self._stepN, self._action_point)
+                    self.printMaze()
+
+                if self._maze.isPlayerOnGoal():
+                    self._won = True
+                    break
+
+                self._lastStepTime = self.getNow()
+                self._stepN += 1
+            if self._view is not None:
+                self._view.escape_pressed()
 
         if self._debug:
             if self._won:
