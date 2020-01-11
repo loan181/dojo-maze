@@ -1,23 +1,20 @@
 accessible: true
 author: Loan
 categories: []
-context: Aide le joueur à trouver la sortie !
+context: Copie ici le contenu de ton fichier `ia.py`
 environment: default
 evaluate: best
 file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: Concours Labyrinthe IA
 network_grading: false
 problems:
     code:
-        name: Code de l'IA
-        type: code
-        language: python
         header: |4-
 
             .. raw:: html
@@ -33,7 +30,33 @@ problems:
              - ``isFreeForward()`` / ``isGoalForward()`` -> ``bool`` : Vérifie si la case devant le joueur est libre/l’objectif
              - ``direction()`` -> ``str(right``/``up``/``left``/``down)`` : Donne la direction du joueur
 
+            .. raw:: html
+
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th></th>
+                      <th scope="col"><code>moveForward</code></th>
+                      <th scope="col"><code>turn...</code></th>
+                      <th scope="col"><code>is...forward</code></th>
+                      <th scope="col"><code>direction</code></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Cout (Point d'action)</th>
+                      <td>5</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+
             N'oublie pas de définir la fonction ``step()`` qui contiendra les actions que doit effectuer le joueur à chaque étape!
+        name: Code de l'IA
+        language: python
+        type: code
         default: |4
 
             def stepExample(game):

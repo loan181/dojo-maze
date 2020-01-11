@@ -1,0 +1,162 @@
+accessible: true
+author: Loan
+categories: []
+context: |
+    Slide d'intro
+    ==============
+
+    .. raw:: html
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <object data="intro/intro.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
+            </object>
+        </div>
+        <a target="_blank" href="intro/intro.pdf">Ouvrir dans une fenêtre</a>
+
+
+    Projet Local
+    ============
+
+
+    Prérequis
+    ---------
+
+    - Python 2 ou 3 doit être installé
+    - ``pygame`` est facultatif, cela te permettra d'avoir une interface plus visuelle
+
+    Installer le projet
+    --------------------
+
+    .. raw:: html
+
+        <ol>
+        <li> Télécharge le projet </li>
+        <a href="intro/dojo-maze-1.0.4.zip" target="_blank" kind="button" class="btn btn-primary">
+            <i class="fa fa-download"></i> Télécharger le projet localement
+        </a>
+        <li> Dézippe le dossier</li>
+
+    Lancer le projet
+    -----------------
+    Se rendre dans le dossier ``dojo-maze-X.Y.Z/src`` puis executer :
+
+    .. code-block:: bash
+
+        python main.py
+
+    Structure
+    ---------
+    Les 2 seuls fichiers que tu aura besoin de modifier sont :
+     - ``ia.py`` : code de l'intelligence artificielle
+     - ``main.py`` : code qui permet de tester ton intelligence artificielle
+
+    Tu peux aussi modifier le contenu du dossier ``maze`` si tu souhaite modifier ou créer un labyrinthe.
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: Introduction
+network_grading: false
+problems:
+    quiz:
+        type: multiple_choice
+        choices:
+        -   text: Programmer une intelligence artificielle qui résoud un labyrinthe
+                toute seule
+            valid: true
+        -   text: Programmer un jeu de labyrinthe ou l'on déplacera le joueur à l'aide
+                des flèches du clavier
+        -   text: Déterminer si le labyrinthe est possible à résoudre ou non
+        -   text: Créer des labyrinthes pour s'assurrer que le joueur est capable
+                de trouver la sortie comme un grand
+        -   feedback: Hélas...
+            text: Manger des pommes de terre
+        limit: 0
+        header: Quel est l'objectif principal ?
+        name: ''
+    quiz2:
+        name: ''
+        choices:
+        -   text: Le labyrinthe peut être carré
+            feedback: Impossible car la taille est de 8x6
+        -   text: Le joueur peut commencer n'importe où
+            feedback: Il commence dans le coin inférieur gauche
+        -   valid: true
+            text: L'objectif se trouve dans le coin en haut à droite
+        -   valid: true
+            text: Le joueur est le seul élément du jeu à se déplacer
+        -   text: Le joueur peut traverser les murs
+        -   feedback: Pas directement, mais il peut avancer -> tourner -> avancer
+                (s'il n'y a pas d'obstacle entre les deux)
+            text: Le joueur peut se déplacer en diagonale
+        -   feedback: Pas directement, mais il peut tourner 2 fois sur lui-même puis
+                avancer
+            text: Le joueur peut reculer
+        -   text: '``direction`` donne la direction de l''objectif'
+            feedback: Elle donne la direction du joueur
+        -   text: La fonction ``step()`` définis ce que doit faire le joueur à chaque
+                étape
+            valid: true
+        type: multiple_choice
+        header: Quels affirmations sont vraies ?
+        limit: 0
+        multiple: true
+    quiz3:
+        choices:
+        -   text: Il trouvera la sortie en 14 étapes (comme dans l'exemple)
+        -   text: Il trouvera la sortie en 19 étapes (il va contourner le bloc)
+        -   text: Il ne trouvera pas la sortie
+            feedback: Effectivement, avec ce code, le joueur sera coincé en haut.
+                Le programme s'interrompera automatiquement après la 1000éme étape
+            valid: true
+        type: multiple_choice
+        header: |
+            Que se passera t'il avec le code suivant pour le labyrinthe suivant :
+
+            Code (même que dans l'exemple) :
+
+            .. code-block:: python
+
+                    def step(game):
+                      if game.isFreeForward() or game.isGoalForward():
+                        game.moveForward()
+                      else:
+                        if game.direction() == "up":
+                          game.turnRight()
+                        else:
+                          game.turnLeft()
+
+            Labyrinthe :
+
+            .. raw:: html
+
+                <img src="intro/img/maze-quiz.PNG" class="img-fluid"></img>
+        name: ''
+        limit: 0
+    quiz4:
+        choices:
+        -   valid: true
+            text: Ils permettent d'évaluer l'efficacité de l'intelligence artificielle
+            feedback: Tu remarquera que le déplacement donne beaucoup de PA, c'est
+                pour t'encourager à éviter de trop faire cette action inutilement
+        -   text: C'est comme une monnaie qu'on dépense à chaque action. Si on n'en
+                à plus sans avoir atteint l'objectif, la partie est perdue !
+            feedback: L'idée n'est pas mauvaise en soit...
+        -   text: C'est le nombre d'étape que le joueur à fait
+        -   text: Ca compte le nombre d'actions que le joueur à fait
+        header: A quoi servent les points d'actions (PA) ?
+        name: ''
+        limit: 0
+        type: multiple_choice
+run_cmd: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
